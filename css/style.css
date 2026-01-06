@@ -1,0 +1,324 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f6f6f4;
+    color: #1c1c1c;
+    line-height: 1.6;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1000;
+    background: transparent;
+    transition: background 0.4s ease, padding 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(246, 246, 244, 0.95);
+    padding: 12px 60px;
+}
+
+body.dark .navbar.scrolled {
+    background: rgba(28, 28, 28, 0.95);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-left: 20px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 14px;
+    position: relative;
+    color: #1c1c1c;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* ================= HERO ================= */
+.hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    padding: 0 80px;
+    position: relative;
+}
+
+/* IMAGE CONTAINER */
+.hero-media {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* IMPORTANT */
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-image.active {
+    opacity: 1;
+}
+
+/* TEXT CONTENT */
+.hero-content {
+    background: none;
+    color: inherit;
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.hero-content p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 300;
+
+}
+
+.btn {
+    margin-top: 50px;
+    padding: 12px 32px;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background: white;
+    color: #1c1c1c;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 10px); }
+}
+
+/* ================= SECTIONS ================= */
+section {
+    padding: 120px 80px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+/* ================= GALLERY ================= */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.art-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.art-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.art-card:hover img {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+    text-align: center;
+}
+
+.art-card:hover .overlay {
+    opacity: 1;
+}
+
+/* ================= FILTERS ================= */
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filters button {
+    background: none;
+    border: 1px solid #1c1c1c;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+body.dark .filters button {
+    border-color: #f6f6f4;
+    color: #f6f6f4;
+}
+
+/* ================= ABOUT ================= */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+    max-width: 520px;
+}
+
+/* ================= EXHIBITIONS ================= */
+.exhibitions ul {
+    list-style: none;
+}
+
+.exhibitions li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+body.dark .exhibitions li {
+    border-color: #444;
+}
+
+/* ================= CONTACT ================= */
+.contact form {
+    max-width: 500px;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    background: transparent;
+    color: inherit;
+}
+
+.contact button {
+    padding: 12px 30px;
+    border: 1px solid currentColor;
+    background: none;
+    cursor: pointer;
+}
+
+.contact-links {
+    margin-top: 30px;
+}
+
+.contact-links a {
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    padding: 40px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.signature {
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    section {
+        padding: 80px 30px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
