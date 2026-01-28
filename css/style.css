@@ -87,6 +87,7 @@ body.dark .navbar.scrolled {
     align-items: center;
     padding: 0 80px;
     position: relative;
+    gap: 20px;
 }
 
 /* IMAGE CONTAINER */
@@ -143,12 +144,12 @@ body.dark .navbar.scrolled {
     border: 1px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
     text-decoration: none;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease, color 0.32s ease;
 }
 
 .btn:hover {
-    background: white;
-    color: #1c1c1c;
+    background: rgb(0, 0, 0);
+    color: #ffffff;
 }
 
 @keyframes bounce {
@@ -188,21 +189,23 @@ h2 {
 }
 
 .art-card:hover img {
-    transform: scale(1.05);
+    transform: translateY(-20px) scale(0.8);
 }
 
 .overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.55);
+    /* background: #2d6d6f; */
     color: white;
     opacity: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     transition: opacity 0.4s ease;
     text-align: center;
+    padding: 20px;
 }
 
 .art-card:hover .overlay {
