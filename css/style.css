@@ -35,6 +35,72 @@ body {
     background: rgba(246, 246, 244, 0.95);
     padding: 12px 60px;
 }
+/* ================= HAMBURGER ================= */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 10px;
+  position: relative;
+  z-index: 2002;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  margin: 5px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* overlay */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #f6f6f4;
+  z-index: 2001;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+}
+
+.mobile-nav.open {
+  display: block;
+  transform: translateY(0);
+}
+
+.mobile-links {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-links a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+/* hamburger animation */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
 
 body.dark .navbar.scrolled {
     background: rgba(28, 28, 28, 0.95);
@@ -47,6 +113,7 @@ body.dark .navbar.scrolled {
     font-size: 25px;
     letter-spacing: 1px;
     margin-left: 20px;
+    z-index: 1001;
 }
 
 .nav-links {
@@ -321,28 +388,9 @@ body.dark .exhibitions li {
     margin-top: 8px;
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 900px) {
-    section {
-        padding: 80px 30px;
-    }
+/* ================= RESPONSIVE (CLEAN) ================= */
 
-    .about {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
-
-    .nav-links {
-        display: none;
-    }
-}
-
-/* ================= RESPONSIVE UPGRADE ================= */
-
-/* Large screens (wide desktops) */
+/* Large screens */
 @media (min-width: 1400px) {
   .hero {
     padding: 0 120px;
@@ -360,7 +408,7 @@ body.dark .exhibitions li {
   }
 }
 
-/* Laptops / standard desktops */
+/* Laptops / desktops */
 @media (max-width: 1200px) {
   .hero {
     padding: 0 50px;
@@ -382,8 +430,13 @@ body.dark .exhibitions li {
   }
 }
 
-/* Tablets */
+/* Tablets + mobile menu */
 @media (max-width: 900px) {
+  section {
+    padding: 90px 24px;
+    scroll-margin-top: 90px;
+  }
+
   .navbar {
     padding: 16px 24px;
   }
@@ -397,9 +450,10 @@ body.dark .exhibitions li {
     font-size: 22px;
   }
 
+  /* HERO */
   .hero {
     grid-template-columns: 1fr;
-    padding: 110px 24px 60px; /* top padding to avoid fixed navbar overlap */
+    padding: 110px 24px 60px;
     gap: 28px;
     min-height: auto;
   }
@@ -409,11 +463,7 @@ body.dark .exhibitions li {
   }
 
   .hero-image {
-    object-fit: cover; /* looks better on small screens */
-  }
-
-  .hero-content {
-    max-width: 520px;
+    object-fit: cover;
   }
 
   .hero-content h1 {
@@ -431,11 +481,13 @@ body.dark .exhibitions li {
     font-size: 14px;
   }
 
-  section {
-    padding: 90px 24px;
-    scroll-margin-top: 90px;
+  /* ABOUT */
+  .about {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
+  /* FILTERS */
   .filters {
     flex-wrap: wrap;
     gap: 10px;
@@ -446,34 +498,55 @@ body.dark .exhibitions li {
     font-size: 14px;
   }
 
+  /* GALLERY */
   .gallery {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 18px;
   }
 
-  .about {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  /* HAMBURGER */
+  .hamburger {
+    display: block;
   }
 
+  /* MOBILE NAV OVERLAY */
   .nav-links {
-    display: none;
+    display: flex;
+    position: fixed;
+    padding-top: 95px;
+    inset: 0;
+    background: #f6f6f4;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+    z-index: 1000;
+    justify-content: flex-start;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    font-size: 22px;
   }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
+  section {
+    padding: 80px 16px;
+    scroll-margin-top: 80px;
+  }
+
   .navbar {
     padding: 14px 16px;
   }
 
   .navbar.scrolled {
     padding: 10px 16px;
-  }
-
-  section {
-    padding: 80px 16px;
-    scroll-margin-top: 80px;
   }
 
   h2 {
@@ -514,7 +587,7 @@ body.dark .exhibitions li {
   }
 }
 
-/* Small mobile (very narrow) */
+/* Small mobile */
 @media (max-width: 380px) {
   .hero-content h1 {
     font-size: 2rem;
@@ -523,4 +596,15 @@ body.dark .exhibitions li {
   .hero-media {
     height: 38vh;
   }
+}
+
+/* Hamburger animation (works at all sizes) */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
