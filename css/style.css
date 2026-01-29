@@ -267,7 +267,7 @@ h2 {
 .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    /* background: rgba(0, 0, 0, 0.55); */
     /* background: #2d6d6f; */
     color: white;
     opacity: 0;
