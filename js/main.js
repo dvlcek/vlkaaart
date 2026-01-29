@@ -9,43 +9,34 @@ window.addEventListener("scroll", () => {
     }
 });
 
-/* ================= HERO SLIDER ================= */
-const slides = document.querySelectorAll(".hero-slide");
-let currentSlide = 0;
-let sliderInterval = null;
+// /* ================= HERO SLIDER ================= */
+// const slides = document.querySelectorAll(".hero-slide");
+// let currentSlide = 0;
+// let sliderInterval = null;
 
-function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[index].classList.add("active");
-}
+// function showSlide(index) {
+//     slides.forEach(slide => slide.classList.remove("active"));
+//     slides[index].classList.add("active");
+// }
 
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length
-    showSlide(currentSlide);
-}
+// function nextSlide() {
+//     currentSlide = (currentSlide + 1) % slides.length
+//     showSlide(currentSlide);
+// }
 
-function startSlider() {
-    sliderInterval = setInterval(nextSlide, 5000);
-}
+// function startSlider() {
+//     sliderInterval = setInterval(nextSlide, 5000);
+// }
 
-function stopSlider() {
-    clearInterval(sliderInterval);
-}
+// function stopSlider() {
+//     clearInterval(sliderInterval);
+// }
 
-startSlider();
+// startSlider();
 
-/* Pause slider on hover (desktop) */
-document.querySelector(".hero").addEventListener("mouseenter", stopSlider);
-document.querySelector(".hero").addEventListener("mouseleave", startSlider);
-
-/* ================= SCROLL DOWN ARROW ================= */
-const scrollDown = document.querySelector(".scroll-down");
-
-scrollDown.addEventListener("click", () => {
-    document.querySelector("#featured").scrollIntoView({
-        behavior: "smooth"
-    });
-});
+// /* Pause slider on hover (desktop) */
+// document.querySelector(".hero").addEventListener("mouseenter", stopSlider);
+// document.querySelector(".hero").addEventListener("mouseleave", startSlider);
 
 /* ================= PORTFOLIO FILTER ================= */
 const filterButtons = document.querySelectorAll(".filters button");
@@ -69,18 +60,10 @@ filterButtons.forEach(button => {
         });
     });
 });
+if (filterButtons.length > 0) {
+  filterButtons[0].click();
+}
 
-/* ================= KEYBOARD NAVIGATION (HERO) ================= */
-document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") {
-        nextSlide();
-    }
-    if (e.key === "ArrowLeft") {
-        currentSlide =
-            (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-    }
-});
 
 /* ================= OPTIONAL: REVEAL ON SCROLL ================= */
 const revealElements = document.querySelectorAll("section");

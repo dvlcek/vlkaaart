@@ -14,6 +14,7 @@ body {
     background: #f6f6f4;
     color: #1c1c1c;
     line-height: 1.6;
+    scroll-behavior: smooth;
 }
 
 /* ================= NAVBAR ================= */
@@ -40,8 +41,10 @@ body.dark .navbar.scrolled {
 }
 
 .logo {
+    text-decoration: none;
+    color: inherit;
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-size: 25px;
     letter-spacing: 1px;
     margin-left: 20px;
 }
@@ -58,7 +61,7 @@ body.dark .navbar.scrolled {
 .nav-links a {
     text-decoration: none;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 15px;
     position: relative;
     color: #1c1c1c;
 }
@@ -160,6 +163,7 @@ body.dark .navbar.scrolled {
 /* ================= SECTIONS ================= */
 section {
     padding: 120px 80px;
+    scroll-margin-top: 90px;
 }
 
 h2 {
@@ -221,11 +225,21 @@ h2 {
 
 .filters button {
     background: none;
-    border: 1px solid #1c1c1c;
+    border: 1px solid white;
     padding: 6px 16px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 15px;
+    font-family: inherit;;
+    transition: transform 0.3s ease;
 }
+.filters button.active {
+  border: 1px solid black;
+}
+
+.filters button:hover {
+  border: 1px solid black;
+}
+
 
 body.dark .filters button {
     border-color: #f6f6f4;
