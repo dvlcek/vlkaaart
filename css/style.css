@@ -42,6 +42,7 @@ body {
   border: none;
   cursor: pointer;
   margin-left: auto;
+  color: inherit;
   padding: 10px;
   position: relative;
   z-index: 2002;
@@ -293,6 +294,7 @@ h2 {
 .filters button {
     background: none;
     border: 1px solid white;
+    color: inherit;
     padding: 6px 16px;
     cursor: pointer;
     font-size: 15px;
